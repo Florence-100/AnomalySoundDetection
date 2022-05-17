@@ -84,7 +84,7 @@ if uploaded_file is not None:
         for index in range(0, len(reconstructed)):
             
             true = flatten_melspecgram.numpy()
-            predicted = reconstructed[index].numpy()
+            predicted = reconstructed[index].detach().numpy()
             anomaly_score = np.mean(np.square(true - predicted))
         
         if anomaly_score > anomaly_threshold:
